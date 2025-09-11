@@ -52,25 +52,32 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(PhoneNumberIsNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleAuthorNotFoundException(PhoneNumberIsNotValidException exception) {
+    public ResponseEntity<Map<String, String>> handlePhoneNumberException(PhoneNumberIsNotValidException exception) {
         log.warn(exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(Map.of("Error", exception.getMessage()));
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleAuthorNotFoundException(ProductNotFoundException exception) {
+    public ResponseEntity<Map<String, String>> handleProductNotFoundException(ProductNotFoundException exception) {
         log.warn(exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Map.of("Error", exception.getMessage()));
     }
 
-//    @ExceptionHandler(BookNotFoundException.class)
-//    public ResponseEntity<Map<String, String>> handleBookNotFoundException(BookNotFoundException exception) {
-//        log.warn(exception.getMessage());
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-//                .body(Map.of("Error", exception.getMessage()));
-//    }
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleOrderNotFoundException(OrderNotFoundException exception) {
+        log.warn(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("Error", exception.getMessage()));
+    }
+
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleCustomerNotFoundException(CustomerNotFoundException exception) {
+        log.warn(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("Error", exception.getMessage()));
+    }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Map<String, String>> handleTypeMismatchException(MethodArgumentTypeMismatchException exception) {
