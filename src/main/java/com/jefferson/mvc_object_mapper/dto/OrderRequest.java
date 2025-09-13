@@ -1,6 +1,5 @@
 package com.jefferson.mvc_object_mapper.dto;
 
-import com.jefferson.mvc_object_mapper.common.OrderStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

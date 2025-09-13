@@ -33,12 +33,14 @@ public class Customer {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @Getter
     @Setter
     private String email;
 
     @Embedded
+    @Getter
+    @Setter
     private PhoneNumber phoneNumber;
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE},
@@ -57,14 +59,6 @@ public class Customer {
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber.getPhoneNumber();
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = new PhoneNumber(phoneNumber);
     }
 
     public void addOrder(Order order) {

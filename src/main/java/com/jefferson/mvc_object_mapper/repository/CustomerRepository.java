@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
     Optional<Customer> findByIdAndDeletedFalse(Long id);
+    Optional<Customer> findByEmailIgnoreCaseAndDeletedFalse(String email);
 }

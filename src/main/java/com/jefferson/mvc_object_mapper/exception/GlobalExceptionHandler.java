@@ -79,6 +79,14 @@ public class GlobalExceptionHandler {
                 .body(Map.of("Error", exception.getMessage()));
     }
 
+    @ExceptionHandler(CustomerEmailAlreadyRegisteredException.class)
+    public ResponseEntity<Map<String, String>> handleCustomerEmailAlreadyRegisteredException(
+            CustomerEmailAlreadyRegisteredException exception) {
+        log.warn(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("Error", exception.getMessage()));
+    }
+
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Map<String, String>> handleTypeMismatchException(MethodArgumentTypeMismatchException exception) {
         log.error(exception.getMessage());
